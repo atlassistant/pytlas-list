@@ -1,7 +1,7 @@
-list skill for pytlas ![License]( https://img.shields.io/badge/License-GPL%20v3-blue.svg)
+list skill for pytlas [![Build Status](https://travis-ci.org/atlassistant/pytlas-list.svg?branch=master)](https://travis-ci.org/atlassistant/pytlas-list) ![License]( https://img.shields.io/badge/License-GPL%20v3-blue.svg)
 ===============================
 
-The skill which helps you to manage your \"aide-mémoire" lists.
+A skill to manage your memory aids.
 
 A skill powered by the open, non intrusive and super easy  pytlas assistant framework 
 
