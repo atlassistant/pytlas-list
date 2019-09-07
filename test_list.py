@@ -165,7 +165,7 @@ def test_enumerate_list():
   agent.model.reset()
   agent.parse('enumerate lists')
   call = agent.model.on_answer.get_call()
-  expect(call.text).to.equal("I found the following lists : {0}".format("shopping list, todo list"))
+  expect(call.text).to.match("I found the following lists : (shopping|todo) list, (shopping|todo) list")
 
 @with_setup(my_setup_function, my_teardown_function)
 def test_display_list():
