@@ -1,5 +1,5 @@
 from sure import expect
-from pytlas import settings
+from pytlas.settings import CONFIG
 from pytlas.testing import create_skill_agent
 from nose import with_setup
 import os
@@ -32,7 +32,7 @@ def setup_module(module):
   global agent
   remove_test_tmp_folder()
   test_tmp_folder_path = get_test_tmp_folder_path()
-  settings.set('path',test_tmp_folder_path,section='pytlas_list')
+  CONFIG.set('path',test_tmp_folder_path,section='pytlas_list')
   agent = create_skill_agent(os.path.dirname(__file__), lang='en')
  
 def teardown_module(module):

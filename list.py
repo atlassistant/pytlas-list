@@ -1,5 +1,5 @@
 from pytlas import intent, training, translations, meta
-import pytlas.settings as settings
+from pytlas.settings import CONFIG
 import json
 import os
 import unicodedata
@@ -134,7 +134,7 @@ def help_meta(_): return {
 
 @intent('enumerate_list')
 def on_enumerate_list(req):
-  list_dir_path = settings.get('path',section='pytlas_list')  
+  list_dir_path = CONFIG.get('path',section='pytlas_list')  
   if not list_dir_path:
     list_dir_path = default_pytlas_list_path()
   list_names = []
@@ -160,7 +160,7 @@ def on_delete_list(req):
   list_name = req.intent.slot('list_name').first().value
   if not list_name:
     return req.agent.ask('list_name',req._('In which list?'))
-  list_dir_path = settings.get('path',section='pytlas_list')  
+  list_dir_path = CONFIG.get('path',section='pytlas_list')  
   if not list_dir_path:
     list_dir_path = default_pytlas_list_path()
   
@@ -190,7 +190,7 @@ def on_add_item(req):
   if not list_name:
     return req.agent.ask('list_name',req._('In which list?'))
 
-  list_dir_path = settings.get('path',section='pytlas_list')  
+  list_dir_path = CONFIG.get('path',section='pytlas_list')  
   if not list_dir_path:
     list_dir_path = default_pytlas_list_path()
   
@@ -231,7 +231,7 @@ def on_remove_item(req):
   if not list_name:
     return req.agent.ask('list_name',req._('From which list?'))
 
-  list_dir_path = settings.get('path',section='pytlas_list')  
+  list_dir_path = CONFIG.get('path',section='pytlas_list')  
   if not list_dir_path:
     list_dir_path = default_pytlas_list_path()
   
@@ -260,7 +260,7 @@ def on_display_list(req):
   if not list_name:
     return req.agent.ask('list_name',req._('Which list?'))
   
-  list_dir_path = settings.get('path',section='pytlas_list')
+  list_dir_path = CONFIG.get('path',section='pytlas_list')
   if not list_dir_path:
     list_dir_path = default_pytlas_list_path()
   
@@ -286,7 +286,7 @@ def on_send_list(req):
   if not list_name:
     return req.agent.ask('list_name',req._('Which list?'))
   
-  list_dir_path = settings.get('path',section='pytlas_list')  
+  list_dir_path = CONFIG.get('path',section='pytlas_list')  
   if not list_dir_path:
     list_dir_path = default_pytlas_list_path()
   
@@ -299,7 +299,7 @@ def on_send_list(req):
   
   from_email = req.intent.slot('from_email').first().value
   if not from_email:
-    from_email = settings.get('from_email',section='pytlas_list')
+    from_email = CONFIG.get('from_email',section='pytlas_list')
   if not from_email:
     return req.agent.ask('from_email',req._('Please tell me from which email address'))
 
@@ -312,19 +312,19 @@ def on_send_list(req):
 
   smtp_address = req.intent.slot('smtp_address').first().value
   if not smtp_address:
-    smtp_address = settings.get('smtp_address',section='pytlas_list')
+    smtp_address = CONFIG.get('smtp_address',section='pytlas_list')
   if not smtp_address:
     return req.agent.ask('smtp_address',req._('Please give me the smtp server address'))
 
   smtp_login = req.intent.slot('smtp_login').first().value
   if not smtp_login:
-    smtp_login = settings.get('smtp_login',section='pytlas_list')
+    smtp_login = CONFIG.get('smtp_login',section='pytlas_list')
   if not smtp_login:
     return req.agent.ask('smtp_login',req._('Please give me the smtp server login'))
 
   smtp_pwd = req.intent.slot('smtp_pwd').first().value
   if not smtp_pwd:
-    smtp_pwd = settings.get('smtp_pwd',section='pytlas_list')
+    smtp_pwd = CONFIG.get('smtp_pwd',section='pytlas_list')
   if not smtp_pwd:
     return req.agent.ask('smtp_pwd',req._('Please give me the smtp server pwd'))
 
